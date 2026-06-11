@@ -1,0 +1,16 @@
+services:
+  postgres:
+    build: .  # Construye el contenedor usando el Dockerfile en el directorio actual
+    container_name: ContDBpractMod3  # Nombre del contenedor en Docker
+    ports:
+      - "5432:5432"  # Mapea el puerto del host con el del contenedor
+    environment:
+      POSTGRES_USER: Admin  # Usuario de la base de datos
+      POSTGRES_PASSWORD: p4ssw0rdDB  # Contraseña del usuario
+      POSTGRES_DB: credenciales  # Nombre de la base de datos
+    volumes:
+      - postgres_data:/var/lib/postgresql/data  # Persistencia de datos (quitar la referencia "data")
+
+volumes:
+  postgres_data:
+    driver: local  # Usa almacenamiento local para la base de datos
